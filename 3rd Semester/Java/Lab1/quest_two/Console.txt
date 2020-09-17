@@ -1,0 +1,14 @@
+Модульные тесты.
+
+javac -encoding KOI8-R  -cp .;junit.jar;hamcrest-core.jar quest_two\module_test.java
+
+java -cp .;junit.jar;hamcrest-core.jar org.junit.runner.JUnitCore quest_two.module_test
+
+Архивация jar.
+
+jar cfe Runner.jar by.vsu.Runner by\vsu\Runner.java - не верно
+jar cfe task_two.jar quest_two.task_two quest_two\task_two.class - правильная архивация
+
+Запуск jar.
+
+java -jar task_two.jar 0.6 5
