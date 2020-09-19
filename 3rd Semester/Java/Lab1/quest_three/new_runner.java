@@ -10,9 +10,9 @@ public class new_runner{
         // int b = Integer.parseInt(args[1]);
         // int c = Integer.parseInt(args[2]);
 
-        int a = 1;
-        int b = 1;
-        int c = 1;
+        // int a = 1;
+        // int b = 1;
+        // int c = 1;
 
         // System.out.println("a=" + a + " "+ "b=" + b + " " + "c=" + c);
 
