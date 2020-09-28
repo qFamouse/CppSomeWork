@@ -233,23 +233,13 @@ DWORD WINAPI BeepMusic(LPVOID lp) {
     return 0;
 }
 
-DWORD WINAPI Task3OddThread(LPVOID lp) {
+DWORD WINAPI Task3Thread(LPVOID lp) {
     for (int i = 1; i <= ArrSize; i++) {
-        if (i % 2 != 0) {
             cout << i << " ";
-        }
     }
     return 0;
 }
 
-DWORD WINAPI Task3EvenThread(LPVOID lp) {
-    for (int i = 1; i <= ArrSize; i++) {
-        if (i % 2 == 0) {
-            cout << i << " ";
-        }
-    }
-    return 0;
-}
 
 int main() {
 #if Task == 0
@@ -262,16 +252,16 @@ int main() {
     HANDLE SecondThread = CreateThread(NULL, 0, InfinityFunk, NULL, 0, &SecondThreadID);
     // Check work
     if (FirstThread == NULL || SecondThread == NULL) {
-        MessageBox(NULL, L"First or Second Thread does not work", L"Warning!", MB_OK);
+//        MessageBox(NULL, L"First or Second Thread does not work", L"Warning!", MB_OK);
     }
 
     system("pause");
     if (!(TerminateThread(FirstThread, 0))) {
-        MessageBox(NULL, L"Error with terminate FirstThread", L"Warning!", MB_OK);
+//        MessageBox(NULL, L"Error with terminate FirstThread", L"Warning!", MB_OK);
         system("pause");
     }
     else if (!(TerminateThread(SecondThread, 0))) {
-        MessageBox(NULL, L"Error with terminate SecondThread", L"Warning!", MB_OK);
+//        MessageBox(NULL, L"Error with terminate SecondThread", L"Warning!", MB_OK);
         system("pause");
     }
     else {
@@ -298,11 +288,14 @@ int main() {
 
     // Create Threads
     DWORD FerstThreadID;
-    HANDLE FirstThread = CreateThread(NULL, 0, Task3EvenThread, NULL, 0, &FerstThreadID);
+    HANDLE FirstThread = CreateThread(NULL, 0, Task3Thread, NULL, 0, &FerstThreadID);
     DWORD SecondThreadID;
-    HANDLE SecondThread = CreateThread(NULL, 0, Task3OddThread, NULL, 0, &SecondThreadID);
+    HANDLE SecondThread = CreateThread(NULL, 0, Task3Thread, NULL, 0, &SecondThreadID);
 
+	WaitForSingleObject(FirstThread, INFINITE);
+	WaitForSingleObject(SecondThread, INFINITE);
 
+	
 #endif
     system("pause");
     return 0;
