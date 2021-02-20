@@ -1,1 +1,0 @@
-java -cp calc.jar InfixToPolizConverter (a+b)*(a+b)*(a-c) | java -jar calc.jar a=1 b=2 c=3
